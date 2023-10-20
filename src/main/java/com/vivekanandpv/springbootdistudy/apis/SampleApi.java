@@ -10,15 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/v1/sample")
 public class SampleApi {
-    private SampleService service;
-
-    //  Setter injection
-    //  @Autowired is required
-    //  Detailed explanation: https://spring.io/blog/2007/07/11/setter-injection-versus-constructor-injection-and-the-use-of-required
+    //  Field injection
+    //  Not recommended
+    //  Detailed explanation: https://www.springcloud.io/post/2022-08/spring-field-injection/#gsc.tab=0
+    //  https://www.baeldung.com/java-spring-field-injection-cons
     @Autowired
-    public void setService(SampleService service) {
-        this.service = service;
-    }
+    private SampleService service;
 
     @GetMapping
     public ResponseEntity<?> get() {
